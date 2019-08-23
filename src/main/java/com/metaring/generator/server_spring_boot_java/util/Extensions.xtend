@@ -25,7 +25,10 @@ final class Extensions {
         if (!attribute.native) {
             return '''«FOR pn : attribute.packagesChain»«pn».«ENDFOR»«attribute.name.toFirstUpper»«IF attribute.enumerator»Enumerator«ELSE»Model«ENDIF»«IF attribute.many»Series«ENDIF»'''
         }
-        return forImport ? getNativeFullyQualifiedNameForImport(attribute) : getNativeFullyQualifiedName(attribute);
+        if(forImport) {
+            return getNativeFullyQualifiedNameForImport(attribute)
+        }
+        return getNativeFullyQualifiedName(attribute)
     }
 
     static def getSpringBootType(Attribute attribute) {
