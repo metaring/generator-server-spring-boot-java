@@ -56,11 +56,18 @@ public class IdentificationHelper {
 package «"auth".combineWithSystemNamespace»;
 
 import «"functionality.FunctionalityInfo".combineWithSystemNamespace»;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-public interface IdentificationModuleInfo {
+@Configuration
+public class IdentificationModuleInfo {
 
     public static final FunctionalityInfo INFO = FunctionalityInfo.create("«module.fullyQualifiedName».verifyIdentification", true, false, false, "«module.fullyQualifiedName».IdentificationDataModel", "java.lang.Boolean");
 
+    @Bean
+    static final «module.fullyQualifiedName».VerifyIdentificationFunctionality verifyIdentificationFunctionality() {
+        return «module.fullyQualifiedName».VerifyIdentificationFunctionality.INSTANCE;
+    }
 }'''
 
     override getVerifiyIdentificationFunctionalityFilename(
@@ -77,7 +84,7 @@ import «module.packageFQN».IdentificationDataModel;
 
 public abstract class VerifyIdentificationFunctionality extends AbstractFunctionality implements GeneratedFunctionality {
 
-    static final VerifyIdentificationFunctionality INSTANCE = new VerifyIdentificationFunctionalityImpl();
+    public static final VerifyIdentificationFunctionality INSTANCE = new VerifyIdentificationFunctionalityImpl();
 
     protected VerifyIdentificationFunctionality() {
         super(IdentificationModuleInfo.INFO, Boolean.class);
@@ -200,11 +207,18 @@ public class LimitedAccessHelper {
 package «"auth".combineWithSystemNamespace»;
 
 import «"functionality.FunctionalityInfo".combineWithSystemNamespace»;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-public interface LimitedAccessModuleInfo {
+@Configuration
+public class LimitedAccessModuleInfo {
 
     public static final FunctionalityInfo INFO = FunctionalityInfo.create("«module.fullyQualifiedName».verifyEnable", true, false, false, "«module.fullyQualifiedName».EnableDataModel", "java.lang.Boolean");
 
+    @Bean
+    static final «module.fullyQualifiedName».VerifyEnableFunctionality verifyEnableFunctionality() {
+        return «module.fullyQualifiedName».VerifyEnableFunctionality.INSTANCE;
+    }
 }'''
 
     override getVerifiyEnableFunctionalityFilename(
@@ -221,7 +235,7 @@ import java.util.concurrent.CompletableFuture;
 
 public abstract class VerifyEnableFunctionality extends AbstractFunctionality implements GeneratedFunctionality {
 
-    static final VerifyEnableFunctionality INSTANCE = new VerifyEnableFunctionalityImpl();
+    public static final VerifyEnableFunctionality INSTANCE = new VerifyEnableFunctionalityImpl();
 
     protected VerifyEnableFunctionality() {
         super(LimitedAccessModuleInfo.INFO, Boolean.class);
