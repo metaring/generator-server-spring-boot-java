@@ -381,8 +381,11 @@ import «"GeneratedCoreType".combineWithSystemNamespace»;
     @Override
     public String toJson() {
         StringBuilder sb = new StringBuilder("[");
-        forEach(it -> sb.append(it.toJson()).append(","));
-        return sb.delete(sb.length() - 1, sb.length()).append("]").toString();
+        if(!isEmpty()) {
+            forEach(it -> sb.append(it.toJson()).append(","));
+            sb.delete(sb.length() - 1, sb.length());
+        }
+        return sb.append("]").toString();
     }
 
     @Override
