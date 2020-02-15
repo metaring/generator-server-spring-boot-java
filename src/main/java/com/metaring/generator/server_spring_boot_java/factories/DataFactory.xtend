@@ -32,9 +32,9 @@ class DataFactory implements com.metaring.generator.model.factories.DataFactory 
 
 «val dataClassName = data.name.toFirstUpper + "Model"»
 «val dataFQN = data.nativeFullyQualifiedName»
-«val dataAttributeTypes = data.attributes.map[it.type]»
+«val dataAttributeTypes = data.attributes.map[it.type + (it.data ? 'Model' : '')]»
 «val dataAttributeNames = data.attributes.map[it.valueName]»
-«FOR attributeFQN : data.attributes.filter[attribute | !attribute.unknown].map[it.nativeFullyQualifiedNameForImport].filter[it !== null && it != dataFQN].toSet»
+«FOR attributeFQN : data.attributes.filter[attribute | !attribute.unknown].map[it.nativeFullyQualifiedNameForImport + (it.data ? 'Model' : '')].filter[it !== null && it != dataFQN].toSet»
 import «attributeFQN»;
 «ENDFOR»
 import «"Tools".combineWithSystemNamespace»;
@@ -114,7 +114,7 @@ import «"GeneratedCoreType".combineWithSystemNamespace»;
     fields+= "        if(dataRepresentation.hasProperty(\"" + fieldName + "\")) {\n"
     fields+= "            try {\n"
     fields+= "                " + fieldName + " = "
-    fields+=data.attributes.get(i).getDataOrNativeTypeFromJsonCreatorMethod(fieldName);
+    fields+=data.attributes.get(i).getDataOrNativeTypeFromJsonCreatorMethod(fieldName).replace('.class', (data.attributes.get(i).data ? 'Model.class' : '.class'));
     fields+=";\n            } catch (Exception e) {\n            }\n        }\n\n"
 }»
 «fields»
@@ -144,7 +144,7 @@ import «"GeneratedCoreType".combineWithSystemNamespace»;
     fields+= "        if(dataRepresentation.hasProperty(\"" + fieldName + "\")) {\n"
     fields+= "            try {\n"
     fields+= "                " + fieldName + " = "
-    fields+=data.attributes.get(i).getDataOrNativeTypeFromJsonCreatorMethod(fieldName);
+    fields+=data.attributes.get(i).getDataOrNativeTypeFromJsonCreatorMethod(fieldName).replace('.class', (data.attributes.get(i).data ? 'Model.class' : '.class'));
     fields+=";\n            } catch (Exception e) {\n            }\n        }\n\n"
 }»
 «fields»
