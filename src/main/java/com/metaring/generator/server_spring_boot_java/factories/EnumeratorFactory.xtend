@@ -37,7 +37,7 @@ import «"GeneratedCoreType".combineWithSystemNamespace»;
 «IF !enumerator.internal»public «ENDIF»class «enumeratorClassName» implements GeneratedCoreType {
 
     «FOR value : enumerator.values»
-    public static final «enumeratorClassName» «value.name.toStaticFieldName» = new «enumeratorClassName»("«value.name.toStaticFieldName»", «value.numericValue»l, "«value.textualValue»");
+    public static final «enumeratorClassName» «value.name.toStaticFieldName» = new «enumeratorClassName»("«value.name.toStaticFieldName»", «value.numericValue»L, "«value.textualValue»");
     «ENDFOR»
 
     private String name;

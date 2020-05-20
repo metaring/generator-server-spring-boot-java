@@ -227,56 +227,56 @@ public class «module.dotAwareName.toFirstUpper»FunctionalitiesManager implements
 «var String inputLower=null»
 «var String output=null»
     public static final CompletableFuture<«IF functionality.output !== null»«output = functionality.output.springBootType»«ELSE»Void«ENDIF»> «functionality.name.toFirstLower»(«IF functionality.input !== null»«input = functionality.input.springBootType» «inputLower = (input == "Boolean" ? "input" : input.toFirstLower)»«ENDIF») {
-        return FunctionalityManager.call(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class«IF inputLower !== null», «inputLower»«ENDIF»«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
+        return FunctionalityManager.call(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, (String) null, (String) null«IF inputLower !== null», «inputLower»«ENDIF»«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
     }
 
     public static final CompletableFuture<«IF output !== null»«output»«ELSE»Void«ENDIF»> «functionality.name.toFirstLower»(Functionality functionality«IF input !== null», «input» «inputLower»«ENDIF») {
-        return FunctionalityManager.call(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, functionality«IF inputLower !== null», «inputLower»«ENDIF»«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
+        return FunctionalityManager.call(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, functionality, (String) null, (String) null«IF inputLower !== null», «inputLower»«ENDIF»«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
     }
 
 «IF input !== null»    public static final CompletableFuture<«IF output !== null»«output»«ELSE»Void«ENDIF»> «functionality.name.toFirstLower»FromJson(String «inputLower»Json) {
-        return FunctionalityManager.callFromJson(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, «inputLower»Json«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
+        return FunctionalityManager.callFromJson(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, (String) null, (String) null, «inputLower»Json«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
     }
 
 «ENDIF»
 «IF input !== null»    public static final CompletableFuture<«IF output !== null»«output»«ELSE»Void«ENDIF»> «functionality.name.toFirstLower»FromJson(Functionality callingFunctionality, String «inputLower»Json) {
-        return FunctionalityManager.callFromJson(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, callingFunctionality, «inputLower»Json«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
+        return FunctionalityManager.callFromJson(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, callingFunctionality, (String) null, (String) null, «inputLower»Json«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
     }
 
 «ENDIF»
 «IF functionality.reserved || functionality.restricted»    public static final CompletableFuture<«IF functionality.output !== null»«output = functionality.output.type»«ELSE»Void«ENDIF»> «functionality.name.toFirstLower»(String identificationDataJson«IF functionality.restricted», String enableDataJson«ENDIF»«IF input !== null», «input» «inputLower»«ENDIF») {
-        return FunctionalityManager.call(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, identificationDataJson«IF functionality.restricted», enableDataJson«ENDIF»«IF inputLower !== null», «inputLower»«ENDIF»«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
+        return FunctionalityManager.call(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, identificationDataJson, «IF functionality.restricted»enableDataJson«ELSE»(String) null«ENDIF»«IF inputLower !== null», «inputLower»«ENDIF»«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
     }
 
     public static final CompletableFuture<«IF functionality.output !== null»«output = functionality.output.type»«ELSE»Void«ENDIF»> «functionality.name.toFirstLower»(Functionality functionality, String identificationDataJson«IF functionality.restricted», String enableDataJson«ENDIF»«IF input !== null», «input» «inputLower»«ENDIF») {
-        return FunctionalityManager.call(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, functionality, identificationDataJson«IF functionality.restricted», enableDataJson«ENDIF»«IF inputLower !== null», «inputLower»«ENDIF»«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
+        return FunctionalityManager.call(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, functionality, identificationDataJson, «IF functionality.restricted»enableDataJson«ELSE»(String) null«ENDIF»«IF inputLower !== null», «inputLower»«ENDIF»«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
     }
 
 «IF input !== null»    public static final CompletableFuture<«IF output !== null»«output»«ELSE»Void«ENDIF»> «functionality.name.toFirstLower»FromJson(String identificationDataJson, «IF functionality.restricted»String enableDataJson, «ENDIF»String «inputLower»Json) {
-        return FunctionalityManager.callFromJson(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, identificationDataJson«IF functionality.restricted», enableDataJson«ENDIF», «inputLower»Json«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
+        return FunctionalityManager.callFromJson(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, identificationDataJson, «IF functionality.restricted»enableDataJson«ELSE»(String) null«ENDIF», «inputLower»Json«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
     }
 
 «ENDIF»
 «IF input !== null»    public static final CompletableFuture<«IF output !== null»«output»«ELSE»Void«ENDIF»> «functionality.name.toFirstLower»FromJson(Functionality callingFunctionality, String identificationDataJson, «IF functionality.restricted»String enableDataJson, «ENDIF»String «inputLower»Json) {
-        return FunctionalityManager.callFromJson(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, callingFunctionality, identificationDataJson«IF functionality.restricted», enableDataJson«ENDIF», «inputLower»Json«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
+        return FunctionalityManager.callFromJson(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, callingFunctionality, identificationDataJson, «IF functionality.restricted»enableDataJson«ELSE»(String) null«ENDIF», «inputLower»Json«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
     }
 
 «ENDIF»
     public static final CompletableFuture<«IF functionality.output !== null»«output = functionality.output.type»«ELSE»Void«ENDIF»> «functionality.name.toFirstLower»(DataRepresentation identificationData«IF functionality.restricted», DataRepresentation enableData«ENDIF»«IF input !== null», «input» «inputLower»«ENDIF») {
-        return FunctionalityManager.call(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, identificationData«IF functionality.restricted», enableData«ENDIF»«IF inputLower !== null», «inputLower»«ENDIF»«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
+        return FunctionalityManager.call(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, identificationData, «IF functionality.restricted»enableData«ELSE»(DataRepresentation) null«ENDIF»«IF inputLower !== null», «inputLower»«ENDIF»«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
     }
 
     public static final CompletableFuture<«IF functionality.output !== null»«output = functionality.output.type»«ELSE»Void«ENDIF»> «functionality.name.toFirstLower»(Functionality functionality, DataRepresentation identificationData«IF functionality.restricted», DataRepresentation enableData«ENDIF»«IF input !== null», «input» «inputLower»«ENDIF») {
-        return FunctionalityManager.call(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, functionality, identificationData«IF functionality.restricted», enableData«ENDIF»«IF inputLower !== null», «inputLower»«ENDIF»«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
+        return FunctionalityManager.call(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, functionality, identificationData, «IF functionality.restricted»enableData«ELSE»(DataRepresentation) null«ENDIF»«IF inputLower !== null», «inputLower»«ENDIF»«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
     }
 
 «IF input !== null»    public static final CompletableFuture<«IF output !== null»«output»«ELSE»Void«ENDIF»> «functionality.name.toFirstLower»FromJson(DataRepresentation identificationData, «IF functionality.restricted»DataRepresentation enableData, «ENDIF»String «inputLower»Json) {
-        return FunctionalityManager.callFromJson(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, identificationData«IF functionality.restricted», enableData«ENDIF», «inputLower»Json«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
+        return FunctionalityManager.callFromJson(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, identificationData, «IF functionality.restricted»enableData«ELSE»(DataRepresentation) null«ENDIF», «inputLower»Json«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
     }
 
 «ENDIF»
 «IF input !== null»    public static final CompletableFuture<«IF output !== null»«output»«ELSE»Void«ENDIF»> «functionality.name.toFirstLower»FromJson(Functionality callingFunctionality, DataRepresentation identificationData, «IF functionality.restricted»DataRepresentation enableData, «ENDIF»String «inputLower»Json) {
-        return FunctionalityManager.callFromJson(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, callingFunctionality, identificationData«IF functionality.restricted», enableData«ENDIF», «inputLower»Json«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
+        return FunctionalityManager.callFromJson(«functionality.name.toStaticFieldName», «functionality.name.toFirstUpper»Functionality.class, callingFunctionality, identificationData, «IF functionality.restricted»enableData«ELSE»(DataRepresentation) null«ENDIF», «inputLower»Json«IF functionality.output !== null», result -> result«functionality.output.getSpringBootDataOrNativeTypeFromJsonCreatorMethod»«ENDIF»);
     }
 
 «ENDIF»
